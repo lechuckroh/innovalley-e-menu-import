@@ -1,2 +1,5 @@
 /venv
 /.idea
+/samples
+.DS_Store
+.vscode
