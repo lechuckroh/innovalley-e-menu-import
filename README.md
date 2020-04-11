@@ -19,6 +19,11 @@ email = {로그인 이메일}
 password = {로그인 패스워드}
 ```
 
+설정파일 값은 환경변수를 사용해서 오버라이드할 수도 있다.
+* `INNO_API_KEY`: `apiKey` 설정
+* `INNO_EMAIL`: `email` 설정
+* `INNO_PASSWORD`: `password` 설정
+
 ## 실행
 ```bash
 # 가상환경 활성화

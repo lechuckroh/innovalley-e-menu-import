@@ -68,9 +68,15 @@ def load_config(filename):
 def init_firebase(cfg) -> (Database, Any):
     fb = cfg['Firebase']
 
+    api_key = os.getenv("INNO_API_KEY")
+    if api_key:
+        fb["apiKey"] = api_key
+    email = os.getenv("INNO_API_KEY") or fb["email"]
+    password = os.getenv("INNO_API_KEY") or fb["password"]
+
     firebase = pyrebase.initialize_app(fb)
     auth = firebase.auth()
-    user = auth.sign_in_with_email_and_password(fb["email"], fb["password"])
+    user = auth.sign_in_with_email_and_password(email, password)
     db = firebase.database()
     return db, user
 
