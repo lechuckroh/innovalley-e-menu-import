@@ -2,14 +2,14 @@ import configparser
 import logging
 import os
 import sys
-from typing import Any
+from typing import Any, List
 
 import click
 from pyrebase import pyrebase
 from pyrebase.pyrebase import Database
 
 from firebase import update_menus
-from menu import load_excel
+from menu import load_excel, Menu
 
 
 @click.group()
@@ -23,7 +23,14 @@ def cli():
 @click.option('-v', '--verbose', count=True)
 def import_(file: str, config: str, verbose: int):
     init_logger(verbose)
-    menu_list = load_excel(file)
+
+    menu_list: List[Menu] = []
+    if os.path.isdir(file):
+        for f in os.listdir(file):
+            if f.endswith(".xlsx"):
+                menu_list.extend(load_excel(os.path.join(file, f)))
+    else:
+        menu_list.extend(load_excel(file))
 
     for menu in menu_list:
         logging.info(menu)

@@ -34,4 +34,7 @@ $ pip install -r requirements.txt
 
 # 메뉴 엑셀 파일 임포트
 $ python3 main.py import <메뉴엑셀파일>
+
+# 디렉토리에 있는 모든 메뉴 엑셀 파일 임포트
+$ python3 main.py import <디렉토리>
 ```
