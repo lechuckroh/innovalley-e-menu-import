@@ -1,5 +1,4 @@
 import re
-from collections import defaultdict
 from datetime import datetime, date
 from typing import List, Any, Dict, Optional
 
@@ -66,6 +65,9 @@ def read_menu(ws: Worksheet, day: date, service_time: str, menu_type: str, col: 
         return None
 
     title = lines[0]
+    if title.startswith("운영 없음"):
+        return None
+
     sides: List[str] = []
     origins: List[str] = []
     for line in lines[1:]:
