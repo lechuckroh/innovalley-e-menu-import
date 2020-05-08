@@ -26,6 +26,9 @@ password = {로그인 패스워드}
 
 ## 실행
 ```bash
+# 가상환경 설치
+$ python3 -m venv venv
+
 # 가상환경 활성화
 $ source venv/bin/activate
 
