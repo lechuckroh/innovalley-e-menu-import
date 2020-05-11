@@ -19,6 +19,8 @@ email = {로그인 이메일}
 password = {로그인 패스워드}
 ```
 
+> Firebase 접속정보는 프로젝트 콘솔의 왼쪽 위에 있는 톱니바퀴 아이콘 -> 프로젝트 설정 -> 일반 -> 내 앱 -> Firebase SDK snippet에서 확인할 수 있다.
+
 설정파일 값은 환경변수를 사용해서 오버라이드할 수도 있다.
 * `INNO_API_KEY`: `apiKey` 설정
 * `INNO_EMAIL`: `email` 설정
