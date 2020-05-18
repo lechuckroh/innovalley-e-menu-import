@@ -5,6 +5,7 @@ import sys
 from typing import Any, List
 
 import click
+from dotenv import load_dotenv
 from pyrebase import pyrebase
 from pyrebase.pyrebase import Database
 
@@ -78,8 +79,8 @@ def init_firebase(cfg) -> (Database, Any):
     api_key = os.getenv("INNO_API_KEY")
     if api_key:
         fb["apiKey"] = api_key
-    email = os.getenv("INNO_API_KEY") or fb["email"]
-    password = os.getenv("INNO_API_KEY") or fb["password"]
+    email = os.getenv("INNO_EMAIL") or fb["email"]
+    password = os.getenv("INNO_PASSWORD") or fb["password"]
 
     firebase = pyrebase.initialize_app(fb)
     auth = firebase.auth()
@@ -89,4 +90,5 @@ def init_firebase(cfg) -> (Database, Any):
 
 
 if __name__ == '__main__':
+    load_dotenv()
     cli()

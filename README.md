@@ -1,9 +1,11 @@
 # 이노밸리 E동 구내식당 메뉴 임포트
 
+[![Build Status](https://drone.lechuckcgx.com/api/badges/lechuckroh/innovalley-e-menu-import/status.svg)](https://drone.lechuckcgx.com/lechuckroh/innovalley-e-menu-import)
+
 판교 이노밸리 E동 구내식당 메뉴 엑셀파일을 임포트해서 Firebase로 저장하기 위한 CLI.
 
 ## 설정파일
-`config.ini`파일을 생성한 다음, Firebase 접속 정보를 설정한다.
+`config.ini`파일을 열어서, Firebase 접속 정보를 설정한다.
 
 ```ini
 [Firebase]
@@ -22,7 +24,7 @@ password = {로그인 패스워드}
 > Firebase 접속정보는 프로젝트 콘솔의 왼쪽 위에 있는 톱니바퀴 아이콘 -> 프로젝트 설정 -> 일반 -> 내 앱 -> Firebase SDK snippet에서 확인할 수 있다.
 > Firebase 사용자 패스워드는 Authentication -> Users 에서 초기화할 수 있다.
 
-설정파일 값은 환경변수를 사용해서 오버라이드할 수도 있다.
+설정파일 값은 환경변수를 사용하거나, `.env` 파일을 사용해서 오버라이드할 수도 있다.
 * `INNO_API_KEY`: `apiKey` 설정
 * `INNO_EMAIL`: `email` 설정
 * `INNO_PASSWORD`: `password` 설정
@@ -43,4 +45,20 @@ $ python3 main.py import <메뉴엑셀파일>
 
 # 디렉토리에 있는 모든 메뉴 엑셀 파일 임포트
 $ python3 main.py import <디렉토리>
+```
+
+## 빌드
+drone.io 를 사용해 빌드하기 위해서는 secret을 등록해야 한다.
+* `docker_username`: docker 저장소 사용자
+* `docker_password`: docker 저장소 패스워스
+
+drone-cli 를 사용해 로컬에서 빌드하려면 `.env`파일에 secret을 등록한 후 사용한다.
+```ini
+docker_username=lechuckroh
+docker_password=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+drone-cli 를 사용해 빌드:
+```bash
+$ drone exec --secret-file .env
 ```
