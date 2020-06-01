@@ -47,6 +47,20 @@ $ python3 main.py import <메뉴엑셀파일>
 $ python3 main.py import <디렉토리>
 ```
 
+### docker를 사용한 실행
+`.env` 파일을 생성한 다음, 인증정보를 입력한다:
+
+```dotenv
+INNO_API_KEY=<apiKey>
+INNO_EMAIL=<email>
+INNO_PASSWORD=<password>
+```
+
+임포트할 `*.xlsx` 파일을 `./data` 디렉토리에 저장한 후, 다음과 같이 실행한다: 
+```bash
+$ docker-compose run --rm importer
+```
+
 ## 빌드
 drone.io 를 사용해 빌드하기 위해서는 secret을 등록해야 한다.
 * `docker_username`: docker 저장소 사용자
