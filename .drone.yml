@@ -11,3 +11,13 @@ steps:
         from_secret: docker_password
       repo: lechuckroh/innovalley-e-menu-importer
       tags: latest
+  - name: docker-arm64v8
+    image: plugins/docker
+    file: Dockerfile-arm64v8
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: lechuckroh/innovalley-e-menu-importer
+      tags: arm64v8-latest
